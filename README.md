@@ -1,4 +1,4 @@
-# ConfigurationExtensions
+# Configuration Extensions Challenge
 
 A Repository learn .NET while coding.
 
