@@ -28,4 +28,25 @@
     <ProjectReference Include="..\src\YamlFile\YamlFile.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="football.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+
+    <None Update="fruits.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+    </None>
+
+    <None Update="quotes.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+    </None>
+
+    <None Update="comments.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+    </None>
+
+    <None Update="user.yml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+    </None>
+  </ItemGroup>
 </Project>
