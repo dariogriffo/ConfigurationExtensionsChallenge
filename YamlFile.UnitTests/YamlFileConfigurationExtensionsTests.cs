@@ -18,5 +18,12 @@ namespace YamlFile.UnitTests
             var configuration = new ConfigurationBuilder().AddYamlFile().Build();
             configuration["second_team"].Should().Be("germany");
         }
+
+        [Fact]
+        public void AddYamlFile_When_Has_Comments()
+        {
+            var configuration = new ConfigurationBuilder().AddYamlFile("comments.yaml").Build();
+            configuration.GetChildren().Should().BeEmpty();
+        }
     }
 }
