@@ -44,8 +44,6 @@ public class YamlFileConfigurationProvider : ConfigurationProvider, IDisposable
                 .ReadAllLines(_fileName)
                 .Where(l => !l.StartsWith("#"));
         
-        string TrimSpaceInTheStart(string line) => line.Split(":").Last().TrimStart();
-        
         var configuration = 
             linesWithPropertyValues
                 .Select(l => l.Split(":"))
