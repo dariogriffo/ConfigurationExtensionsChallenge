@@ -47,7 +47,7 @@ public class YamlFileConfigurationProvider : ConfigurationProvider, IDisposable
         var configuration = 
             linesWithPropertyValues
                 .Select(l => l.Split(":"))
-                .Select(l => new KeyValuePair<string, string>(l[0], l[1].TrimStart()));
+                .Select(l => new KeyValuePair<string, string>(l[0], l[1].TrimStart().Trim('\"')));
                 
         Data = configuration.ToDictionary(l => l.Key, l => l.Value);
     }
