@@ -47,10 +47,14 @@ public class YamlFileConfigurationProvider : ConfigurationProvider, IDisposable
         var configuration = 
             linesWithPropertyValues
                 .Select(l => l.Split(":"))
-                .Select(l => _removeWrappingQuotes ? 
-                    new KeyValuePair<string, string>(l[0], l[1].TrimStart().Trim('\"')) : 
-                    new KeyValuePair<string, string>(l[0], l[1].TrimStart()));
-                
+                .Select(ParseQuotes);
+
+        KeyValuePair<string, string> ParseQuotes(string[] l) {
+            return _removeWrappingQuotes ? 
+                new KeyValuePair<string, string>(l[0], l[1].TrimStart().Trim('\"')) :
+                new KeyValuePair<string, string>(l[0], l[1].Trim());
+        }
+
         Data = configuration.ToDictionary(l => l.Key, l => l.Value);
     }
 
