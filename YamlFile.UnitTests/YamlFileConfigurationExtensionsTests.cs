@@ -20,6 +20,13 @@ namespace YamlFile.UnitTests
         }
 
         [Fact]
+        public void AddYamlFile_When_Values_Has_Quotes()
+        {
+            var configuration = new ConfigurationBuilder().AddYamlFile("quotes.yml", removeWrappingQuotes: true).Build();
+            configuration["author"].Should().Be("Leonardo da Vinci");
+        }
+
+        [Fact]
         public void AddYamlFile_When_Has_Comments()
         {
             var configuration = new ConfigurationBuilder().AddYamlFile("comments.yaml").Build();
