@@ -32,5 +32,12 @@ namespace YamlFile.UnitTests
             var configuration = new ConfigurationBuilder().AddYamlFile("comments.yaml").Build();
             configuration.GetChildren().Should().BeEmpty();
         }
+
+        [Fact]
+        public void AddYamlFile_When_Has_DuplicateKeys_ThrowsArgumentException()
+        {
+            var configuration = new ConfigurationBuilder();
+            Assert.Throws<ArgumentException>(() => configuration.AddYamlFile("duplicates.yaml").Build());
+        }
     }
 }
