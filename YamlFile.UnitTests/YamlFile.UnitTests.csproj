@@ -48,5 +48,9 @@
     <None Update="user.yml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
     </None>
+
+    <None Update="duplicates.yaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>  
+    </None>
   </ItemGroup>
 </Project>
