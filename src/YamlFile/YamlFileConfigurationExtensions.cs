@@ -18,7 +18,6 @@ public static class YamlFileConfigurationExtensions
             var directory = builder.Properties.TryGetValue("FileProvider", out var p) && p is FileConfigurationProvider configurationProvider
                 ? Path.GetDirectoryName(configurationProvider.Source.Path)
                 : Directory.GetCurrentDirectory();
-
             filePath = Path.Combine(directory, fileName);
         }
 
@@ -28,6 +27,7 @@ public static class YamlFileConfigurationExtensions
         }
 
         var provider = new YamlFileConfigurationProvider(filePath, trim, removeWrappingQuotes, prefix, reloadOnChange);
-        return builder.Add(new YamlFileConfigurationSource(provider));
+        var source = new YamlFileConfigurationSource(provider);
+        return builder.Add(source);
     }
 }
