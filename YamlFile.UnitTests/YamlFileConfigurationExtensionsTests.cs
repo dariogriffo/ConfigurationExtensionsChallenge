@@ -24,6 +24,7 @@ namespace YamlFile.UnitTests
         {
             var configuration = new ConfigurationBuilder().AddYamlFile("quotes.yml", removeWrappingQuotes: true).Build();
             configuration["author"].Should().Be("Leonardo Da Vinci");
+            configuration["quote"].Should().Be("Learning never exhaust the mind");
         }
 
         [Fact]
