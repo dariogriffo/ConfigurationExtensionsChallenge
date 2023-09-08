@@ -23,7 +23,7 @@ namespace YamlFile.UnitTests
         public void AddYamlFile_When_Values_Has_Quotes()
         {
             var configuration = new ConfigurationBuilder().AddYamlFile("quotes.yml", removeWrappingQuotes: true).Build();
-            configuration["author"].Should().Be("Leonardo da Vinci");
+            configuration["author"].Should().Be("Leonardo Da Vinci");
         }
 
         [Fact]
