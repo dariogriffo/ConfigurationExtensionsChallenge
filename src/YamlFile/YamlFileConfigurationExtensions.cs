@@ -9,7 +9,6 @@ public static class YamlFileConfigurationExtensions
         string fileName = "football.yml",
         bool trim = false,
         bool removeWrappingQuotes = true,
-        string prefix = null,
         bool reloadOnChange = false) 
     {
         var filePath = fileName;
@@ -26,7 +25,7 @@ public static class YamlFileConfigurationExtensions
             return builder;
         }
 
-        var provider = new YamlFileConfigurationProvider(filePath, trim, removeWrappingQuotes, prefix, reloadOnChange);
+        var provider = new YamlFileConfigurationProvider(filePath, trim, removeWrappingQuotes, reloadOnChange);
         var source = new YamlFileConfigurationSource(provider);
         return builder.Add(source);
     }
