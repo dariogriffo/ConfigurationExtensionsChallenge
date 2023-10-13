@@ -44,13 +44,20 @@ public class YamlFileConfigurationProvider : ConfigurationProvider, IDisposable
         
         var configuration = 
             linesWithPropertyValues
+                .Select(ParseQuotes)
                 .Select(l => l.Split(":"))
-                .Select(ParseQuotes);
+                .Select(l => new KeyValuePair<string, string>(l.First(), l.LastOrDefault("").Trim()));
 
-        KeyValuePair<string, string> ParseQuotes(string[] l) {
-            return _removeWrappingQuotes ? 
-                new KeyValuePair<string, string>(l[0], l[1].TrimStart().Trim('\"')) :
-                new KeyValuePair<string, string>(l[0], l[1].Trim());
+        string ParseQuotes(string l)
+        {
+            if(!_removeWrappingQuotes) 
+            {
+                return l;
+            }
+
+            var parts = l.Split(':');
+            l = string.Join(":", parts.Skip(1));
+            return $"{parts[0]}:{l.TrimStart().Trim('\"')}";
         }
 
         Data = configuration.ToDictionary(l => l.Key, l => l.Value);
