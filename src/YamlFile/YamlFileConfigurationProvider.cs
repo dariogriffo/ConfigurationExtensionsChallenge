@@ -6,15 +6,13 @@ public class YamlFileConfigurationProvider : ConfigurationProvider, IDisposable
     private readonly string _fileName;
     private readonly bool _trim;
     private readonly bool _removeWrappingQuotes;
-    private readonly string _prefix;
     private readonly FileSystemWatcher _watcher;
 
-    public YamlFileConfigurationProvider(string fileName, bool trim, bool removeWrappingQuotes, string prefix, bool reloadOnChange)
+    public YamlFileConfigurationProvider(string fileName, bool trim, bool removeWrappingQuotes, bool reloadOnChange)
     {
         _fileName = fileName;
         _trim = trim;
         _removeWrappingQuotes = removeWrappingQuotes;
-        _prefix = prefix;
 
         _watcher = new FileSystemWatcher(Path.GetDirectoryName(_fileName) ?? ".");
         _watcher.Changed += new FileSystemEventHandler(OnChanged);
